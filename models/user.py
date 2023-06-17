@@ -1,6 +1,6 @@
-from init import db,ma
+from init import db, ma
 
-class user(db.model):
+class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -13,7 +13,5 @@ class UserSchema(ma.Schema):
     class Meta:
         fields = ('id', 'name', 'email', 'password', 'is_admin')
 
-# this is for one user
 user_schema = UserSchema(exclude=['password'])
-# many = list of users
 users_schema = UserSchema(many=True, exclude=['password'])
