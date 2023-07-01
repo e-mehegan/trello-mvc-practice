@@ -32,6 +32,7 @@ def auth_register():
         if err.orig.pgcode == errorcodes.NOT_NULL_VIOLATION:
             return { 'error': f'The {err.orig.diag.column_name} is required' }, 409
         
+
 @auth_bp.route('/login', methods=['POST'])
 def auth_login():
     body_data = request.get_json()
